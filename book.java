@@ -1,16 +1,17 @@
+import java.util.Date;
 public class book{
 
     int bookID;
     String bookName;
     boolean bookStatus;             //  ** ask to make boolean
-
+    Date dateAccessed;
 
     public book( int bkid, String name ){       //  purposefully left out bookStatus, as 
 
         bookID = bkid;
         bookName = name;
         bookStatus = true;
-
+        dateAccessed = null;
     }
 
     ///////////////////////////////////////////////
@@ -27,6 +28,10 @@ public class book{
         return bookStatus;
     }
 
+    public Date getDateAccessed(){
+        return dateAccessed;
+    }
+
     //////////////////////////////////////////////
 
     public void setBookID(int a){
@@ -41,8 +46,24 @@ public class book{
         bookStatus = a;
     }
 
+    public void setDateAccessed(Date a){
+        dateAccessed = a;
+    }
 
+    //////////////////////////////////////////////
 
+    public String toStringBook(){
+
+        String stat = null;
+        if(bookStatus == true){
+            stat = "available, accessed on: "+dateAccessed;
+        }else{
+            stat = "unavailable";
+        }
+
+        String alles = bookID+": "+bookName+" | "+ stat;
+        return alles;
+    }
 
 
 
